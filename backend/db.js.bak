@@ -146,7 +146,7 @@ async function verificaCodiguin(nome_usuario) {
             return false;
         }
     }
-    module.exports.verificaCodiguin = verificaCodiguin;    
+    module.exports.getemail = getemail;    
         
     async function verificaZap(nomor) {
         let users = await usuario.findOne({numero_zap: nomor});

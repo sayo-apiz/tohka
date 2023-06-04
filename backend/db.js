@@ -28,6 +28,16 @@ const msgmail = require('../email/email2')
     }
     module.exports.verificarEmail = verificarEmail;
     
+    async function verificarEmailv2(nome) {
+        let users = await usuario.findOne({nome_usuario: nome});
+        if(users !== null) {
+            return users.email;
+        } else {
+            return false;
+        }
+    }
+    module.exports.verificarEmailv2 = verificarEmailv2;
+    
       async function banir(nome_usuario, expired, motivo) {
         usuario.updateOne({nome_usuario: nome_usuario}, {apikey: null, defaultKey: null, banido: Date.now() + toMs(expired), motivo_ban: motivo}, function (err, res) {
             if (err) throw err;
@@ -138,15 +148,7 @@ async function verificaCodiguin(nome_usuario) {
     }
     module.exports.verificaCodiguin = verificaCodiguin;    
     
-    async function getemail(nome_usuario) {
-        let users = await usuario.findOne({nome_usuario: nome_usuario});
-        if(users !== null) {
-            return users.email;
-        } else {
-            return false;
-        }
-    }
-    module.exports.getemail = getemail;    
+    
         
     async function verificaZap(nomor) {
         let users = await usuario.findOne({numero_zap: nomor});
