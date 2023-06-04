@@ -23,9 +23,8 @@ if (checkPrem) {
 req.flash('error_msg', 'Este usuário já tem Premium');
 return res.redirect('/admin');
 } else {
-emailer await = getemail(username)
 adicionar_premium(username, customKey, expired)
-enviar_email(`parabéns ${username} agora você e um usuário premium 👏\n\nDIAS: ${expired}`, emailer)
+enviar_email(`parabéns ${username} agora você e um usuário premium 👏\n\nDIAS: ${expired}`, getemail(username))
 req.flash('success_msg', `Premium adicionado para ${username} com sucesso`);
 return res.redirect('/admin');
 }
@@ -45,9 +44,8 @@ res.redirect('/admin');
 } else {
 let checkPrem = await checkPremium(username)
 if (checkPrem) {
-emailer await = getemail(username)
 deletar_premium(username);
-enviar_email(`${username} seu premium foi deletado pelo administrador`, emailer)
+enviar_email(`${username} seu premium foi deletado pelo administrador`, getemail(username))
 req.flash('success_msg', `Premium de ${username} foi deletado`);
 res.redirect('/admin');
 } else {
@@ -69,7 +67,6 @@ if (!checking) {
 req.flash('error_msg', 'Este usuário não está registrado');
 res.redirect('/admin');
 } else {
-emailer await = getemail(username)
 enviar_email(`${username} parabéns você recebeu um código promocional no valor de ${valorcode} de dinheiro, resgate ele o quanto antes\n\nCÓDIGO: ${codigogerado}\npara resgatá-lo entre aqui: https://tohka.tech/resgatar`, emailer)
 addcodiguin(username, codigogerado, valorcode)
 req.flash('success_msg', `Código gerado com sucesso, código para resgatá-lo ${codigogerado} envie para o comprador resgatar.`);
