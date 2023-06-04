@@ -4,7 +4,7 @@ const router = express.Router();
 const passport = require('passport');
 
 const { getHashedPassword, randomText } = require('../func.backend/function');
-const { verificaNome, gerarUsuario, verificaZap, checkVerify, verificarEmail } = require('../backend/db');
+const { verificaNome, gerarUsuario, verificaZap, checkVerify } = require('../backend/db');
 const mailer = require('../email/otpValidation')
 const { notAuthenticated, captchaRegister, captchaLogin } = require('../func.backend/auth');
 const { usuario } = require('../backend/modelagem');

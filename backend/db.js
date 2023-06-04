@@ -16,6 +16,16 @@ const keynova = randomText(10);
     }
     module.exports.salvardd = salvardd
     
+    async function verificarEmail(email) {
+        let users = await usuario.findOne({email: email});
+        if(users !== null) {
+            return users.email;
+        } else {
+            return false;
+        }
+    }
+    module.exports.verificarEmail = verificarEmail;
+    
       async function banir(nome_usuario, expired, motivo) {
         usuario.updateOne({nome_usuario: nome_usuario}, {apikey: null, defaultKey: null, banido: Date.now() + toMs(expired), motivo_ban: motivo}, function (err, res) {
             if (err) throw err;
