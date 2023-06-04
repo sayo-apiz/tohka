@@ -1,571 +1,194 @@
 exports.emailverifica = (verifykan) => {
 return `
-<!DOCTYPE html>
+<!doctype html>
+  <html>
+ <head>
+<meta charset='utf-8'>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>verifique sua conta!!</title>
+ <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+ <link href='' rel='stylesheet'>
+ <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <style></style>
+ </head>
+  <body oncontextmenu='return false' class='snippet-body'>
+ <!DOCTYPE html>
 <html>
+
 <head>
-<title>verifique sua conta!</title>
-<script src="/cdn-cgi/apps/head/V-B_3GEZrblx4ZPdMLriZjG4-ro.js"></script><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-<style>
-      @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap&family=Carter+One&display=swap&family=Shrikhand&display=swap');
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+        @media screen {
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+            }
 
-      * {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-      }
+            @font-face {
+                font-family: 'Lato';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+            }
 
-      body {
-        font-family: 'Acme', sans-serif;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #000000;
-      }
+            @font-face {
+                font-family: 'Lato';
+                font-style: italic;
+                font-weight: 400;
+                src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+            }
 
-      .ring {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, 10%);
-        background: transparent;
-        text-align: center;
-        font-family: 'Acme', sans-serif;
-        font-size: 88px;
-        color: red;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        text-shadow: 0 0 27px red;
-      }
-
-      .wrapper {
-        height: 100vh;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        position: relative;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        overflow: hidden;
-      }
-
-      p {
-        color: #707070;
-        font-family: 'Carter One', cursive;
-        position: absolute;
-        top: 60%;
-        left: 39%;
-        transition: all 0.5s ease-out;
-      }
-
-      p:hover {
-        color: #fff;
-        font-family: 'Shrikhand', cursive;
-        font-size: 1.5em;
-        letter-spacing: 5px;
-        left: 28.5%;
-        text-shadow: 0 0 26px #ffffff;
-      }
-
-      .main-div {
-        position: absolute;
-        top: 50%;
-        left: 30%;
-        margin: 10px;
-        background-color: transparent;
-      }
-
-      .main-div::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        -webkit-box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        z-index: -1;
-        -webkit-animation-name: gradient-shadow;
-        animation-name: gradient-shadow;
-        -webkit-animation-timing-function: ease;
-        animation-timing-function: ease;
-        -webkit-animation-duration: 2s;
-        animation-duration: 2s;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-      }
-
-      .main-animation-slow::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 20%;
-        height: 70%;
-        -webkit-box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        z-index: -1;
-        -webkit-animation-name: half-white-shadow;
-        animation-name: half-white-shadow;
-        -webkit-animation-timing-function: ease;
-        animation-timing-function: ease;
-        -webkit-animation-duration: 5s;
-        animation-duration: 5s;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-      }
-
-      .main-animation-slow::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 30%;
-        height: 70%;
-        -webkit-box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-        box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-        z-index: -1;
-        -webkit-animation-name: half-cyan-shadow;
-        animation-name: half-cyan-shadow;
-        -webkit-animation-timing-function: ease;
-        animation-timing-function: ease;
-        -webkit-animation-duration: 5s;
-        animation-duration: 5s;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-      }
-
-      a {
-        text-decoration: none;
-      }
-
-      h1 {
-        font-size: 40px;
-        margin: 0;
-        position: relative;
-        z-index: 3;
-        padding: 20px;
-        background-color: #000000;
-        color: #f3fdff;
-        border-radius: 10px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-      }
-
-      @-webkit-keyframes red-shadow {
-        0% {
-          top: 0;
-          left: 0;
+            @font-face {
+                font-family: 'Lato';
+                font-style: italic;
+                font-weight: 700;
+                src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+            }
         }
 
-        25% {
-          top: 50%;
-          left: 0;
+        /* CLIENT-SPECIFIC STYLES */
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
 
-        50% {
-          top: 50%;
-          left: 50%;
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
         }
 
-        75% {
-          top: 0;
-          left: 50%;
+        img {
+            -ms-interpolation-mode: bicubic;
         }
 
-        100% {
-          top: 0;
-          left: 0;
-        }
-      }
-
-      @keyframes red-shadow {
-        0% {
-          top: 0;
-          left: 0;
+        /* RESET STYLES */
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
         }
 
-        25% {
-          top: 50%;
-          left: 0;
+        table {
+            border-collapse: collapse !important;
         }
 
-        50% {
-          top: 50%;
-          left: 50%;
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
         }
 
-        75% {
-          top: 0;
-          left: 50%;
+        /* iOS BLUE LINKS */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
         }
 
-        100% {
-          top: 0;
-          left: 0;
-        }
-      }
-
-      @-webkit-keyframes cyan-shadow {
-        0% {
-          right: 0;
-          bottom: 0;
+        /* MOBILE STYLES */
+        @media screen and (max-width:600px) {
+            h1 {
+                font-size: 32px !important;
+                line-height: 32px !important;
+            }
         }
 
-        25% {
-          right: 0;
-          bottom: 50%;
+        /* ANDROID CENTER FIX */
+        div[style*="margin: 16px 0;"] {
+            margin: 0 !important;
         }
-
-        50% {
-          right: 50%;
-          bottom: 50%;
-        }
-
-        75% {
-          right: 50%;
-          bottom: 0;
-        }
-
-        100% {
-          right: 0;
-          bottom: 0;
-        }
-      }
-
-      @keyframes cyan-shadow {
-        0% {
-          right: 0;
-          bottom: 0;
-        }
-
-        25% {
-          right: 0;
-          bottom: 50%;
-        }
-
-        50% {
-          right: 50%;
-          bottom: 50%;
-        }
-
-        75% {
-          right: 50%;
-          bottom: 0;
-        }
-
-        100% {
-          right: 0;
-          bottom: 0;
-        }
-      }
-
-      @-webkit-keyframes gradient-shadow {
-        0% {
-          -webkit-box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-          box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-        }
-
-        20% {
-          -webkit-box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-          box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-        }
-
-        40% {
-          -webkit-box-shadow: 0 0 17px 3px #0f0, 0 0 4px 2px #0f0;
-          box-shadow: 0 0 17px 3px #0f0, 0 0 4px 2px #0f0;
-        }
-
-        60% {
-          -webkit-box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-          box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        }
-
-        80% {
-          -webkit-box-shadow: 0 0 17px 3px #f00, 0 0 4px 2px #f00;
-          box-shadow: 0 0 17px 3px #f00, 0 0 4px 2px #f00;
-        }
-
-        100% {
-          -webkit-box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-          box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-        }
-      }
-
-      @keyframes gradient-shadow {
-        0% {
-          -webkit-box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-          box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-        }
-
-        20% {
-          -webkit-box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-          box-shadow: 0 0 17px 3px #ff0007, 0 0 4px 2px #ff0007;
-        }
-
-        40% {
-          -webkit-box-shadow: 0 0 17px 3px #0f0, 0 0 4px 2px #0f0;
-          box-shadow: 0 0 17px 3px #0f0, 0 0 4px 2px #0f0;
-        }
-
-        60% {
-          -webkit-box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-          box-shadow: 0 0 17px 3px #ffffff, 0 0 4px 2px #ffffff;
-        }
-
-        80% {
-          -webkit-box-shadow: 0 0 17px 3px #f00, 0 0 4px 2px #f00;
-          box-shadow: 0 0 17px 3px #f00, 0 0 4px 2px #f00;
-        }
-
-        100% {
-          -webkit-box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-          box-shadow: 0 0 17px 3px #C586C0, 0 0 4px 2px #C586C0;
-        }
-      }
-
-      @-webkit-keyframes half-white-shadow {
-        0% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        16.66% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        32.32% {
-          top: 0;
-          left: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        49.98% {
-          top: 50%;
-          left: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        66.64% {
-          top: 50%;
-          left: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        83.3% {
-          top: 50%;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        100% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-      }
-
-      @keyframes half-white-shadow {
-        0% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        16.66% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        32.32% {
-          top: 0;
-          left: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        49.98% {
-          top: 50%;
-          left: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        66.64% {
-          top: 50%;
-          left: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        83.3% {
-          top: 50%;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        100% {
-          top: 0;
-          left: 0;
-          height: 50%;
-          width: 50%;
-        }
-      }
-
-      @-webkit-keyframes half-cyan-shadow {
-        0% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        16.66% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        32.32% {
-          bottom: 0;
-          right: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        49.98% {
-          bottom: 50%;
-          right: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        66.64% {
-          bottom: 50%;
-          right: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        83.3% {
-          bottom: 50%;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        100% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-      }
-
-      @keyframes half-cyan-shadow {
-        0% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        16.66% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        32.32% {
-          bottom: 0;
-          right: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        49.98% {
-          bottom: 50%;
-          right: 50%;
-          height: 50%;
-          width: 50%;
-        }
-
-        66.64% {
-          bottom: 50%;
-          right: 0;
-          height: 50%;
-          width: 100%;
-        }
-
-        83.3% {
-          bottom: 50%;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-
-        100% {
-          bottom: 0;
-          right: 0;
-          height: 50%;
-          width: 50%;
-        }
-      }
     </style>
-<div class="ring">
-<strong> TOHKA API </strong>
-<h1>verifique sua conta!</h1>
-</div>
-<div class="main-div main-animation-slow">
-<a href="${verifykan}">
-<h1>VERIFIQUE  AQUI</h1>
-</a>
-</div>
+</head>
 
-<p> ${verifykan} </p>
-<script>(function(){var js = "window['__CF$cv$params']={r:'7d20e0243d07db19',m:'wOwlQ.1k8uUsLQAoE6m2NCLZeJBvBYzjG92N_hM9.UY-1685889045-0-AdOHQYK5tHor/MYczvz7mwkAc8uqGynKKxkKOwP6zhQw',u:'/cdn-cgi/challenge-platform/h/g'};_cpo=document.createElement('script');_cpo.nonce='',_cpo.src='/cdn-cgi/challenge-platform/scripts/invisible.js',document.getElementsByTagName('head')[0].appendChild(_cpo);";var _0xh = document.createElement('iframe');_0xh.height = 1;_0xh.width = 1;_0xh.style.position = 'absolute';_0xh.style.top = 0;_0xh.style.left = 0;_0xh.style.border = 'none';_0xh.style.visibility = 'hidden';document.body.appendChild(_0xh);function handler() {var _0xi = _0xh.contentDocument || _0xh.contentWindow.document;if (_0xi) {var _0xj = _0xi.createElement('script');_0xj.nonce = '';_0xj.innerHTML = js;_0xi.getElementsByTagName('head')[0].appendChild(_0xj);}}if (document.readyState !== 'loading') {handler();} else if (window.addEventListener) {document.addEventListener('DOMContentLoaded', handler);} else {var prev = document.onreadystatechange || function () {};document.onreadystatechange = function (e) {prev(e);if (document.readyState !== 'loading') {document.onreadystatechange = prev;handler();}};}})();</script></body>
-<script src="https://cdn.rawgit.com/bungfrangki/efeksalju/2a7805c7/efek-salju.js" type="d1987685549a87a70fdc651c-text/javascript"></script>
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d1987685549a87a70fdc651c-|49" defer></script></html>
-`
+<body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
+    <!-- HIDDEN PREHEADER TEXT -->
+    <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> We're thrilled to have you here! Get ready to dive into your new account. </div>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <!-- LOGO -->
+        <tr>
+            <td bgcolor="#ff0000" align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#ff0000" align="center" style="padding: 0px 10px 0px 10px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#000000" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
+                            <h1 style="font-size: 48px; font-weight: 400; margin: 2; color:red">tohka-api</h1> <img src="https://tohka.tech/img/tohka.jpg" width="125" height="120" style="display: block; border: 0px;" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#000" align="center" style="padding: 0px 10px 0px 10px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#000000" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;">Olá esta mensagem e para você verificar seu email, clique no botão logo abaixo, para poder verificar e efetuar o login no site!.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#000000" align="left">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td bgcolor="#000000" align="center" style="padding: 20px 30px 60px 30px;">
+                                        <table border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#ff0000"><a href="${verifykan}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #000000; text-decoration: none; color: #000000; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #ff0000; display: inline-block;">verificar</a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr> <!-- COPY -->
+                    <tr>
+                        <td bgcolor="#000000" align="left" style="padding: 0px 30px 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;">caso o botão acima não funcionar, copie e cole o link abaixo em seu navegador:</p>
+                        </td>
+                    </tr> <!-- COPY -->
+                    <tr>
+                        <td bgcolor="#000000" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0; color: yellow">${verifykan}</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#000000" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
+                            <p style="margin: 0;"></p>
+                        </td>
+                    </tr>
+       
+                </table>
+            </td>
+        </tr>
+        <tr>
+
+</body>
+</html>
+  <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript'></script>
+</body>
+</html>`
 }
 
