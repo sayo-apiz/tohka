@@ -70,7 +70,7 @@ req.flash('error_msg', 'Este usuário não está registrado');
 res.redirect('/admin');
 } else {
 const emailer await = getemail(username)
-enviar_email(`${username} parabéns você recebeu um código promocional no valor de ${valorcode} de dinheiro, resgate ele o quanto antes\n\nCÓDIGO: ${codigogerado}\npara resgatá-lo entre aqui: https://tohka.tech/resgatar`, emailer)
+enviar_email(`${username} parabéns você recebeu um código promocional no valor de ${valorcode} de dinheiro, resgate ele o quanto antes\n\nCÓDIGO: ${codigogerado}\npara resgatá-lo entre aqui: https://tohka.tech/resgatar`
 addcodiguin(username, codigogerado, valorcode)
 req.flash('success_msg', `Código gerado com sucesso, código para resgatá-lo ${codigogerado} envie para o comprador resgatar.`);
 return res.redirect('/admin');

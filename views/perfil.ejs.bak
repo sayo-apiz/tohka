@@ -193,8 +193,6 @@
                         <p class="card-text">Nivel : <%= nivel %> </p>
                         <p class="card-text">Exp : <%= abreviar(exp) %> / <%= abreviar(reqXp) %> </p>
                         <p class="card-text">Número : <%= numero_zap %> </p>
-                        <p class="card-text">e-mail : <%= email %> </p>
-                        <p class="card-text">instagram : <%= instagram %> </p>
                         <% if (premium !== null) { %>
                         <p class="card-text">Premium Expira em : <%= expired %> </p>           
                         <% } else { %>

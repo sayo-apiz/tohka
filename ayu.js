@@ -649,7 +649,7 @@ layout: 'docs'
 
 app.get('/perfil', isAuthenticated, async (req, res) => {
 	let {
-		apikey, nome_usuario, limit, premium, totalreq, numero_zap, admin, perfil, dinheiro, nivel, exp, banido, motivo_ban, bronze, prata, ouro, diamante, musica
+		apikey, nome_usuario, limit, premium, totalreq, numero_zap, admin, perfil, dinheiro, nivel, exp, banido, motivo_ban, bronze, prata, ouro, diamante, musica, email, instagram
 	} = req.user
 	let cekexp = ms(await verificar_dias_expirados(nome_usuario) - Date.now())
 	let expired = '0 d'
@@ -684,9 +684,11 @@ let expiredban = '0 d'
 		expired,
 		admin,
 		imgpadrao,
-                mscpadrao,
+        mscpadrao,
 		perfil,
-                musica,
+        musica,
+        email,
+        instagram,
 		expired,
 		Lista,
 		dinheiro,
