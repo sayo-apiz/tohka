@@ -94,6 +94,8 @@ req.flash('error_msg', 'Este usuário já esta banido');
 return res.redirect('/admin');
 } else {
 banir(username, expired, motivo)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`${username} sua conta foi baninda por desrespeitar nossas leis!, motivo do Banimento:\n\n${motivo}`, checkMail)
 req.flash('success_msg', `A conta de ${username} foi banida com sucesso`);
 return res.redirect('/admin');
 }
@@ -117,6 +119,8 @@ req.flash('error_msg', 'Este usuário não esta banido');
 return res.redirect('/admin');
 } else {
 desbanir(username)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`${username} parabéns  sua conta foi desbanida por um dos nossos administradores!`, checkMail)
 req.flash('success_msg', `A conta de ${username} foi desbanida com sucesso`);
 return res.redirect('/admin');
 }
@@ -131,14 +135,8 @@ let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 changeKey(nome_usuario, customKey)
 req.flash('success_msg', `Sua apikey foi customizada para ${customKey}`);
-let inf = `❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}`
-let inf2 = `por ventura não foi você que mudou, contate algum administrador do site`
-let templateButtons = [
-  {index: 1, urlButton: {displayText: '⭐ Copiar Apikey Nova!', url: 'https://www.whatsapp.com/otp/copy/' + customKey}},
-  {index: 2, urlButton: {displayText: '⭐ Voltar para o site!', url: 'https://'+ req.hostname}},
-  {index: 3, urlButton: {displayText: '⭐ Falar com Suporte!', url: 'https://wa.me/5562936180708?text=preciso+de+ajuda'}},
-]
-enviarnozap_button(numero_zap, inf, inf2, templateButtons)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
@@ -154,27 +152,8 @@ let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 setperfil(nome_usuario, img)
 req.flash('success_msg', `Sua foto de perfil foi customizada!`);
-let inf = `❗ _FOTO_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua foto de perfil!`
-let inf2 = `por ventura não foi você que mudou, contate algum administrador do site`
-let butt = [{
-index: 0,
-urlButton: {
-url: 'https://www.whatsapp.com/otp/copy/' + img,
-displayText: 'copiar novo link!'
-}
-},{
-index:1,
-urlButton: {
-url: '',
-displayText: 'administração'
-}
-}]
-let templateButtons = [
-  {index: 1, urlButton: {displayText: '⭐ Copiar Link!', url: 'https://www.whatsapp.com/otp/copy/' + img}},
-  {index: 2, urlButton: {displayText: '⭐ Voltar para o site!', url: 'https://'+ req.hostname}},
-  {index: 3, urlButton: {displayText: '⭐ Falar com Suporte!', url: 'https://wa.me/5562936180708?text=preciso+de+ajuda'}},
-]
-enviarbutimg(numero_zap, inf, inf2, img, templateButtons)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`❗ _FOTO_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua foto de perfil!\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
@@ -190,27 +169,8 @@ let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 setmusica(nome_usuario, music)
 req.flash('success_msg', `Sua música foi customizada!`);
-let inf = `❗ _MÚSICA_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua música`
-let inf2 = `por ventura não foi você que mudou, contate algum administrador do site`
-let butt = [{
-index: 0,
-urlButton: {
-url: 'https://www.whatsapp.com/otp/copy/' + music,
-displayText: 'copiar novo link!'
-}
-},{
-index:1,
-urlButton: {
-url: '',
-displayText: 'administração'
-}
-}]
-let templateButtons = [
-  {index: 1, urlButton: {displayText: '⭐ Copiar Link!', url: 'https://www.whatsapp.com/otp/copy/' + music}},
-  {index: 2, urlButton: {displayText: '⭐ Voltar para o site!', url: 'https://'+ req.hostname}},
-  {index: 3, urlButton: {displayText: '⭐ Falar com Suporte!', url: 'https://wa.me/5562936180708?text=preciso+de+ajuda'}},
-]
-//enviarbutimg(numero_zap, inf, inf2, music, templateButtons)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`❗ _MÚSICA_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua música\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');

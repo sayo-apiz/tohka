@@ -1,6 +1,6 @@
 require('../configuração');
 const express = require('express');
-const { verificaNome, resetarAllLimit, resetTodayReq, banir, desbanir, checkBanimento, addcodiguin, enviar_email, getemail } = require('../backend/db');
+const { verificaNome, resetarAllLimit, resetTodayReq, banir, desbanir, checkBanimento, addcodiguin, enviar_email, verificarEmailv2 } = require('../backend/db');
 const { adicionar_premium, deletar_premium, checkPremium, changeKey, resetOneLimit, setperfil, setmusica } = require('../backend/premium');
 const { isAuthenticated } = require('../func.backend/auth');
 const router = express.Router();
@@ -23,7 +23,7 @@ if (checkPrem) {
 req.flash('error_msg', 'Este usuário já tem Premium');
 return res.redirect('/admin');
 } else {
-let checkMail = await getemail(username)
+let checkMail = await verificarEmailv2(username)
 adicionar_premium(username, customKey, expired)
 enviar_email(`parabéns ${username} agora você e um usuário premium 👏\n\nDIAS: ${expired}`,checkMail )
 req.flash('success_msg', `Premium adicionado para ${username} com sucesso`);
@@ -46,7 +46,7 @@ res.redirect('/admin');
 let checkPrem = await checkPremium(username)
 if (checkPrem) {
 deletar_premium(username);
-let checkMail = await getemail(username)
+let checkMail = await verificarEmailv2(username)
 enviar_email(`${username} seu premium foi deletado pelo administrador`, checkMail)
 req.flash('success_msg', `Premium de ${username} foi deletado`);
 res.redirect('/admin');
@@ -69,7 +69,7 @@ if (!checking) {
 req.flash('error_msg', 'Este usuário não está registrado');
 res.redirect('/admin');
 } else {
-let checkMail = await getemail(username)
+let checkMail = await verificarEmailv2(username)
 enviar_email(`${username} parabéns você recebeu um código promocional no valor de ${valorcode} de dinheiro, resgate ele o quanto antes\n\nCÓDIGO: ${codigogerado}\npara resgatá-lo entre aqui: https://tohka.tech/resgatar`, checkMail)
 addcodiguin(username, codigogerado, valorcode)
 req.flash('success_msg', `Código gerado com sucesso, código para resgatá-lo ${codigogerado} envie para o comprador resgatar.`);
@@ -94,6 +94,8 @@ req.flash('error_msg', 'Este usuário já esta banido');
 return res.redirect('/admin');
 } else {
 banir(username, expired, motivo)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`${username} sua conta foi baninda por desrespeitar nossas leis!, motivo do Banimento:\n\n${motivo}`, checkMail)
 req.flash('success_msg', `A conta de ${username} foi banida com sucesso`);
 return res.redirect('/admin');
 }
@@ -117,6 +119,8 @@ req.flash('error_msg', 'Este usuário não esta banido');
 return res.redirect('/admin');
 } else {
 desbanir(username)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`${username} parabéns  sua conta foi desbanida por um dos nossos administradores!`, checkMail)
 req.flash('success_msg', `A conta de ${username} foi desbanida com sucesso`);
 return res.redirect('/admin');
 }
@@ -131,14 +135,8 @@ let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 changeKey(nome_usuario, customKey)
 req.flash('success_msg', `Sua apikey foi customizada para ${customKey}`);
-let inf = `❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}`
-let inf2 = `por ventura não foi você que mudou, contate algum administrador do site`
-let templateButtons = [
-  {index: 1, urlButton: {displayText: '⭐ Copiar Apikey Nova!', url: 'https://www.whatsapp.com/otp/copy/' + customKey}},
-  {index: 2, urlButton: {displayText: '⭐ Voltar para o site!', url: 'https://'+ req.hostname}},
-  {index: 3, urlButton: {displayText: '⭐ Falar com Suporte!', url: 'https://wa.me/5562936180708?text=preciso+de+ajuda'}},
-]
-enviarnozap_button(numero_zap, inf, inf2, templateButtons)
+let checkMail = await verificarEmailv2(username)
+enviar_email(`❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
