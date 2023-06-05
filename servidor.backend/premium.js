@@ -135,8 +135,7 @@ let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 changeKey(nome_usuario, customKey)
 req.flash('success_msg', `Sua apikey foi customizada para ${customKey}`);
-let checkMail = await verificarEmailv2(username)
-enviar_email(`❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
+enviar_email(`❗ _APIKEY_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua apikey para : ${customKey}\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, email)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
@@ -146,14 +145,13 @@ res.redirect('/perfil');
 
 router.post('/setperfil', isAuthenticated, async (req, res) => {
 let { img } = req.body;
-let { nome_usuario, numero_zap } = req.user
+let { nome_usuario, numero_zap, email } = req.user
 console.log(nome_usuario)
 let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 setperfil(nome_usuario, img)
 req.flash('success_msg', `Sua foto de perfil foi customizada!`);
-let checkMail = await verificarEmailv2(username)
-enviar_email(`❗ _FOTO_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua foto de perfil!\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
+enviar_email(`❗ _FOTO_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua foto de perfil!\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, email)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
@@ -163,14 +161,13 @@ res.redirect('/perfil');
 
 router.post('/setmusica', isAuthenticated, async (req, res) => {
 let { music } = req.body;
-let { nome_usuario, numero_zap } = req.user
+let { nome_usuario, numero_zap, email } = req.user
 console.log(nome_usuario)
 let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
 setmusica(nome_usuario, music)
 req.flash('success_msg', `Sua música foi customizada!`);
-let checkMail = await verificarEmailv2(username)
-enviar_email(`❗ _MÚSICA_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua música\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, checkMail)
+enviar_email(`❗ _MÚSICA_ ❗\n\n Olá ${nome_usuario} você acabou de alterar sua música\n\n\npor ventura não foi você que mudou, contate algum administrador do site`, email)
 res.redirect('/perfil');
 } else {
 req.flash('error_msg', 'Você não é um usuário premium');
