@@ -5,6 +5,7 @@ const { randomText } = require('../func.backend/function');
 const keynova = randomText(10);
 const mailer = require('../email/otpValidation')
 const msgmail = require('../email/email2')
+const msgmail3 = require('../email/email3')
 
     async function gerarUsuario(nome_usuario, senha, email, instagram, apikey, id, numero_zap, img) {
         let obj = { nome_usuario, senha, email, instagram, apikey, defaultKey: apikey, jid: id, numero_zap, status: null, perfil: img, premium: null, banido: null, motivo_ban: null, admin: null, resgatar: null, valoresgatar: null, musica: 'mscaqui', limit: limitOfc, dinheiro: 0, totalreq: 0, exp: 0, nivel: 1, bronze: 0, prata: 0, ouro: 0, diamante: 0 };
@@ -333,21 +334,16 @@ async function verificaCodiguin(nome_usuario) {
        async function uplvl() {
         let users = await usuario.find({});
         users.forEach(async(data) => {
-            let { exp, nivel, apikey, numero_zap, nome_usuario } = data
+            let { exp, nivel, apikey, numero_zap, nome_usuario, email } = data
             if (!exp || exp === null) return                         
              const requiredXp = 5000 * (Math.pow(2, nivel) - 1);
             if (requiredXp <= exp) {
             niveladd(apikey, 1)
            let nivelveri = await verificanivel2(nome_usuario)
            console.log(nome_usuario + 'upou de nível!!')
-            dinheiroadd(apikey, 100)
-            let inf = `você upo de nível no site!\n\nvocê recebeu 1000  de dinheiro`
-            let inf2 = `level up`
-let templateButtons = [
-  {index: 1, urlButton: {displayText: 'ir para o site!', url: 'https://ayu-api.cfm'}},
-  {index: 2, urlButton: {displayText: 'Falar com Suporte!', url: 'https://wa.me/5562936180708?text=preciso+de+ajuda'}},
-]
-//enviarnozap_button(numero_zap, inf, inf2, templateButtons)
+            dinheiroadd(apikey, 1000)
+            let inf = `ola ${nome_usuario} você upo de nível no site!\n\nvocê recebeu 1000  de dinheiro`          
+            enviar_email(inf, email)
             }
         })
     }
@@ -508,3 +504,15 @@ const mailDetails = {
 mailer.mailTransporter.sendMail(mailDetails)
 }
 module.exports.enviar_email = enviar_email    
+
+async function enviar_email_foto(mensagem, img, email) {
+const mailDetails = {
+      from: "kasumicomerce@gmail.com",
+      to: email,
+      subject: "clique aqui",
+      html: msgmail3.emailpadraofoto(mensagem, img),
+     
+};
+mailer.mailTransporter.sendMail(mailDetails)
+}
+module.exports.enviar_email_foto = enviar_email_foto   

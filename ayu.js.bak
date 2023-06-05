@@ -22,7 +22,7 @@ const time = moment().format('DD/MM HH:mm:ss')
 
 
 const { usuario, Utils, ig } = require('./backend/modelagem')
-const { verificaNome, verificaNome2, verificaAdmin, checkVerify, verificaDinheiro2, dinheiroadd, dinheiroretirar, niveladd, nivelretirar, verificanivel, verificanivel2, verificaVerif, expadd, expretirar, verificaexp, verificaexp2, uplvl, addUtil, addRequest,  getTotalReq, getTodayReq, getidveri, verificaAll, verificaZap, tempo_ban, banir, verificar_dias_ban, resetAllLimit, resetarAllTributers, salvardd, verificaNomeig, verificaCodiguin, addcodiguin, enviar_email, enviar_email_foto } = require('./backend/db');
+const { verificaNome, verificaNome2, verificaAdmin, checkVerify, verificaDinheiro2, dinheiroadd, dinheiroretirar, niveladd, nivelretirar, verificanivel, verificanivel2, verificaVerif, expadd, expretirar, verificaexp, verificaexp2, uplvl, addUtil, addRequest,  getTotalReq, getTodayReq, getidveri, verificaAll, verificaZap, tempo_ban, banir, verificar_dias_ban, resetAllLimit, resetarAllTributers, salvardd, verificaNomeig, verificaCodiguin, addcodiguin } = require('./backend/db');
 const { isAuthenticated } = require('./func.backend/auth');
 const { connectMongoDb } = require('./backend/connect');
 const { getTotalUser, verificar_dias_expirados, verificar_img, tempo_expirado, adicionar_premium, deletar_premium, checkPremium } = require('./backend/premium');
