@@ -129,7 +129,7 @@ return res.redirect('/admin');
 
 router.post('/custom', isAuthenticated, async (req, res) => {
 let { customKey } = req.body;
-let { nome_usuario, numero_zap, email } = req.user
+let { nome_usuario, numero_zap } = req.user
 console.log(nome_usuario)
 let checkPrem = await checkPremium(nome_usuario);
 if (checkPrem) {
