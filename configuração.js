@@ -1,6 +1,6 @@
-global.admin1 = 'breno'
+global.admin1 = 'LUCAS'
 global.admin2 = 'admin'
-global.coderNumero = ['5562936180708']
+global.coderNumero = ['5561996697514']
 global.prefix = ['/']
 global.emoji_bo = '🦾'
 global.auutor = 'ayu 🌸' //nome dos créditos da figurinha > autor
