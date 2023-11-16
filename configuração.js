@@ -11,4 +11,4 @@ global.tokens = 3461
 global.limitPremium = 100000
 global.recaptcha_key_1 = '6LdsgMQcAAAAAI0L_GDclL_tdlBgcNC_-l-oWRr5',
 global.recaptcha_key_2 = '6LdsgMQcAAAAABf8mW5r85ARRwq4hJd2s1_usQAh',
-global.dbURI = 'mongodb+srv://Sayo:3461@cluster0.cdd0g.mongodb.net/kasumiapiofc?retryWrites=true&w=majority' 
+global.dbURI = 'mongodb+srv://Sayo:3461@cluster0.cdd0g.mongodb.net/lucasdb?retryWrites=true&w=majority' 
